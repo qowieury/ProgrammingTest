@@ -84,7 +84,7 @@ public class Users {
     private boolean isNotHaveSameUser(String username){
         for (int i=0;i<userList.size();i++){
             if(username == userList.get(i).getName()){
-                System.out.println("Cant add , found same username");
+                System.out.println("found same username");
                 return false;
             }
         }
