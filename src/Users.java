@@ -18,7 +18,7 @@ public class Users {
                 add(t);
                 return t;
             }
-        }
+        }else return null;
     }
 
     // Add new user to repository
@@ -59,6 +59,8 @@ public class Users {
 
     private boolean isBlank(String s){
 
-        if(s == null||s == ""||s ==" ")
+        if(s == null||s == ""||s ==" "){
+            return false;
+        }else return true;
     }
 }
