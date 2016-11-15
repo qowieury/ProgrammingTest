@@ -10,7 +10,7 @@ public class User implements IUser {
 
     @Override
     public String setName(String name) {
-        if(name != null){
+        if(name != null && !name.contains(" ")){
             this.name = name;
             return this.name;
         }
@@ -20,7 +20,7 @@ public class User implements IUser {
 
     @Override
     public String setPassword(String password) {
-        if(password != null && password.length()>=4){
+        if(password != null && password.length()>=4 && !name.contains(" ")){
             this.password=password;
             return password;
         }
