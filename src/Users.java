@@ -13,14 +13,19 @@ public class Users {
     // user created with this method should be automatically added to userList;
     public IUser create(int type, String name, String password) {
 
-                if (type == 1) {
-                    Student s = new Student(name, password);
-                    add(s);
-                    return s;
-                } else {
+                if (type == 2) {
                     Teacher t = new Teacher(name, password);
                     add(t);
                     return t;
+
+                } else {
+                    if(type != 1){
+                        System.out.println("For add user "+name+ ", wrong type , we will let you to be Student automatically.");
+                    }
+                    Student s = new Student(name, password);
+                    add(s);
+                    return s;
+
                 }
             }
 
@@ -37,12 +42,23 @@ public class Users {
     public void remove(IUser user) throws RuntimeException {
         if(user !=null) {
             if (!exists(user)) {
-                System.out.println("cannot find" + user.getName());
+                System.out.println("Did not remove , cannot find" + user.getName());
                 throw new RuntimeException();
             } else {
                 userList.remove(user);
             }
         }
+    }
+
+    public void remove(String name){
+        for (int i=0;i<userList.size();i++){
+            if(userList.get(i).getName() == name){
+                userList.remove(i);
+                break;
+            }
+
+        }
+        System.out.println("Did not remove , cannot find " + name);
     }
 
     // Return true if the user is in the list

@@ -3,6 +3,7 @@ public class User implements IUser {
     protected String name;
     protected String password;
     protected int type;
+
     @Override
     public String getName() {
         return name;
@@ -10,10 +11,10 @@ public class User implements IUser {
 
     @Override
     public String setName(String name) {
-        if(isBlank(name)){
+        if (isBlank(name)) {
             this.name = name;
             return this.name;
-        }else{
+        } else {
 
             System.out.println(" Your name isn't correct! ");
             return null;
@@ -24,10 +25,10 @@ public class User implements IUser {
 
     @Override
     public String setPassword(String password) {
-        if(isBlank(password)&& password.length()>=4 ){
-            this.password=password;
+        if (isBlank(password) && password.length() >= 4) {
+            this.password = password;
             return password;
-        }else{
+        } else {
             System.out.println(" Your password isn't correct! ");
             return null;
         }
@@ -36,9 +37,9 @@ public class User implements IUser {
 
     @Override
     public boolean isPasswordCorrect(String password) {
-        if(this.password == password){
+        if (this.password == password) {
             return true;
-        }else{
+        } else {
             return false;
         }
 
@@ -51,11 +52,11 @@ public class User implements IUser {
         return type;
     }
 
-    private boolean isBlank(String string){
+    private boolean isBlank(String string) {
 
-        if(string == null||string == ""||string.contains(" ")){
+        if (string == null || string == "" || string.contains(" ")) {
             return false;
-        }else {
+        } else {
             return true;
         }
 
