@@ -56,7 +56,7 @@ public class User implements IUser {
         if(string == null||string == ""||string.contains(" ")){
             return false;
         }else {
-            return false;
+            return true;
         }
 
     }
