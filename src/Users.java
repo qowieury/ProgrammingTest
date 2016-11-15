@@ -9,11 +9,11 @@ public class Users {
     public IUser create(int type, String name, String password) {
 
         if(type == 1){
-            Student s = new Student(type,name,password);
+            Student s = new Student(name,password);
             add(s);
             return s;
         }else{
-            Teacher t = new Teacher(type,name,password);
+            Teacher t = new Teacher(name,password);
             add(t);
             return t;
         }
