@@ -1,38 +1,47 @@
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 
 public class Users {
     // User repository
     private ArrayList<IUser> userList;
 
+    public Users(){
+        userList = new ArrayList<IUser>();
+    }
+
     // Create new user with type, name and password
     // user created with this method should be automatically added to userList;
     public IUser create(int type, String name, String password) {
 
-        if(name != null) {
-            if (type == 1) {
-                Student s = new Student(name, password);
-                add(s);
-                return s;
-            } else {
-                Teacher t = new Teacher(name, password);
-                add(t);
-                return t;
+                if (type == 1) {
+                    Student s = new Student(name, password);
+                    add(s);
+                    return s;
+                } else {
+                    Teacher t = new Teacher(name, password);
+                    add(t);
+                    return t;
+                }
             }
-        }else return null;
-    }
+
 
     // Add new user to repository
     public void add(IUser user) {
-        this.userList.add(user);
+        if(isNotHaveSameUser(user.getName())) {
+            this.userList.add(user);
+        }
     }
 
     // Delete user from repository
     // Throw  RuntimeException if the user is not in the list
     public void remove(IUser user) throws RuntimeException {
-        if(!userList.contains(user)){
-            throw new RuntimeException();
-        }else{
-            userList.remove(user);
+        if(user !=null) {
+            if (!exists(user)) {
+                System.out.println("cannot find" + user.getName());
+                throw new RuntimeException();
+            } else {
+                userList.remove(user);
+            }
         }
     }
 
@@ -56,11 +65,15 @@ public class Users {
         }
         return count;
     }
-
-    private boolean isBlank(String s){
-
-        if(s == null||s == ""||s ==" "){
-            return false;
-        }else return true;
+    private boolean isNotHaveSameUser(String username){
+        for (int i=0;i<userList.size();i++){
+            if(username == userList.get(i).getName()){
+                System.out.println("Cant add , found same username");
+                return false;
+            }
+        }
+        return true;
     }
+
+
 }
