@@ -8,14 +8,16 @@ public class Users {
     // user created with this method should be automatically added to userList;
     public IUser create(int type, String name, String password) {
 
-        if(type == 1){
-            Student s = new Student(name,password);
-            add(s);
-            return s;
-        }else{
-            Teacher t = new Teacher(name,password);
-            add(t);
-            return t;
+        if(name != null) {
+            if (type == 1) {
+                Student s = new Student(name, password);
+                add(s);
+                return s;
+            } else {
+                Teacher t = new Teacher(name, password);
+                add(t);
+                return t;
+            }
         }
     }
 
@@ -53,5 +55,10 @@ public class Users {
             }
         }
         return count;
+    }
+
+    private boolean isBlank(String s){
+
+        if(s == null||s == ""||s ==" ")
     }
 }
